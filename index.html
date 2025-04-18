@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ispani | On-Demand Services Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body>
+    <!-- App Loading Screen -->
+    <div id="app-loader" class="app-loader">
+        <div class="loader-content">
+            <div class="logo-spinner">
+                <i class="fas fa-hands-helping"></i>
+            </div>
+            <h1>Ispani</h1>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button id="fab-button" class="fab-button">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Main App Container -->
+    <div class="app-container">
+        <!-- Header with Enhanced Navigation -->
+        <header class="app-header">
+            <div class="container">
+                <div class="header-left">
+                    <div class="app-logo">
+                        <i class="fas fa-hands-helping"></i>
+                        <h1>Ispa<span>ni</span></h1>
+                    </div>
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="#how-it-works" class="nav-link active"><i class="fas fa-play-circle"></i> How it Works</a></li>
+                            <li><a href="#find-provider" class="nav-link"><i class="fas fa-search"></i> Find Services</a></li>
+                            <li><a href="#categories" class="nav-link"><i class="fas fa-th-large"></i> Categories</a></li>
+                            <li><a href="#testimonials" class="nav-link"><i class="fas fa-quote-left"></i> Testimonials</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Search for services...">
+                        <button id="search-button" class="btn-icon"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="user-actions">
+                        <button id="notification-btn" class="btn-icon notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <button id="user-menu-btn" class="user-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                        </button>
+                    </div>
+                </div>
+                <button id="mobile-menu-toggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="mobile-menu-header">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                    <div>
+                        <h4>John Doe</h4>
+                        <p>Premium Member</p>
+                    </div>
+                </div>
+                <button id="close-mobile-menu" class="btn-icon">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#how-it-works" class="mobile-nav-link active"><i class="fas fa-play-circle"></i> How it Works</a></li>
+                    <li><a href="#find-provider" class="mobile-nav-link"><i class="fas fa-search"></i> Find Services</a></li>
+                    <li><a href="#categories" class="mobile-nav-link"><i class="fas fa-th-large"></i> Categories</a></li>
+                    <li><a href="#testimonials" class="mobile-nav-link"><i class="fas fa-quote-left"></i> Testimonials</a></li>
+                    <li><a href="#my-bookings" class="mobile-nav-link"><i class="fas fa-calendar-check"></i> My Bookings</a></li>
+                    <li><a href="#favorites" class="mobile-nav-link"><i class="fas fa-heart"></i> Favorites</a></li>
+                    <li><a href="#settings" class="mobile-nav-link"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-footer">
+                <button id="become-provider-btn" class="btn-primary btn-block">Become a Provider</button>
+                <button id="logout-button" class="btn-secondary btn-block">Logout</button>
+            </div>
+        </div>
+
+        <!-- Notification Panel -->
+        <div id="notification-panel" class="notification-panel">
+            <div class="notification-header">
+                <h3>Notifications</h3>
+                <button id="close-notifications" class="btn-icon">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="notification-list">
+                <div class="notification-item unread">
+                    <div class="notification-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="notification-content">
+                        <p>Your booking with <strong>Premium Plumbing</strong> has been confirmed for tomorrow at 2:00 PM</p>
+                        <span class="notification-time">2 hours ago</span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="notification-content">
+                        <p><strong>Spark Electrical</strong> has a special offer for returning customers</p>
+                        <span class="notification-time">1 day ago</span>
+                    </div>
+                </div>
+                <div class="notification-item unread">
+                    <div class="notification-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div class="notification-content">
+                        <p>New message from <strong>Clean & Shine</strong> about your upcoming service</p>
+                        <span class="notification-time">3 days ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="notification-footer">
+                <button class="btn-text">Mark all as read</button>
+                <button class="btn-text">View all notifications</button>
+            </div>
+        </div>
+
+        <!-- User Menu Dropdown -->
+        <div id="user-menu" class="user-menu">
+            <div class="user-menu-header">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                    <div>
+                        <h4>John Doe</h4>
+                        <p>john.doe@example.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="user-menu-links">
+                <a href="#my-profile" class="user-menu-link"><i class="fas fa-user"></i> My Profile</a>
+                <a href="#my-bookings" class="user-menu-link"><i class="fas fa-calendar-check"></i> My Bookings</a>
+                <a href="#favorites" class="user-menu-link"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="#payments" class="user-menu-link"><i class="fas fa-credit-card"></i> Payments</a>
+                <a href="#settings" class="user-menu-link"><i class="fas fa-cog"></i> Settings</a>
+            </div>
+            <div class="user-menu-footer">
+                <button id="logout-button" class="btn-secondary btn-block">Logout</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="container">
+                    <div class="hero-content animate__animated animate__fadeIn">
+                        <h2>Quality Services On Demand</h2>
+                        <p>Connect with trusted professionals for all your home service needs. Fast, reliable, and hassle-free.</p>
+                        <div class="hero-search">
+                            <input type="text" placeholder="What service do you need?">
+                            <button class="btn-primary btn-lg"><i class="fas fa-search"></i> Find Services</button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Happy Service Provider">
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section id="how-it-works" class="section how-it-works-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>How Ispani Works</h2>
+                        <p>Get your service completed in just a few simple steps</p>
+                    </div>
+                    <div class="steps-container">
+                        <div class="step-card animate__animated">
+                            <div class="step-number">1</div>
+                            <div class="step-icon">
+                                <i class="fas fa-search-location"></i>
+                            </div>
+                            <h3>Search & Select</h3>
+                            <p>Find the perfect service provider based on your location, budget, and service requirements.</p>
+                        </div>
+                        <div class="step-card animate__animated">
+                            <div class="step-number">2</div>
+                            <div class="step-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3>Schedule Appointment</h3>
+                            <p>Choose a convenient time slot that works for you. Available 24/7 for emergency services.</p>
+                        </div>
+                        <div class="step-card animate__animated">
+                            <div class="step-number">3</div>
+                            <div class="step-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <h3>Secure Payment</h3>
+                            <p>Pay securely through our platform with multiple payment options available.</p>
+                        </div>
+                        <div class="step-card animate__animated">
+                            <div class="step-number">4</div>
+                            <div class="step-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <h3>Enjoy Your Service</h3>
+                            <p>Relax while our verified professionals take care of your service needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Service Categories -->
+            <section id="categories" class="section categories-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Popular Service Categories</h2>
+                        <p>Browse services by category</p>
+                    </div>
+                    <div class="categories-grid">
+                        <div class="category-card">
+                            <div class="category-icon plumbing">
+                                <i class="fas fa-faucet"></i>
+                            </div>
+                            <h3>Plumbing</h3>
+                            <p>Leaks, installations, repairs</p>
+                            <a href="#" class="btn-text">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon electrical">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Electrical</h3>
+                            <p>Wiring, lighting, repairs</p>
+                            <a href="#" class="btn-text">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon cleaning">
+                                <i class="fas fa-broom"></i>
+                            </div>
+                            <h3>Cleaning</h3>
+                            <p>Home, office, deep cleaning</p>
+                            <a href="#" class="btn-text">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon carpentry">
+                                <i class="fas fa-hammer"></i>
+                            </div>
+                            <h3>Carpentry</h3>
+                            <p>Furniture, repairs, custom</p>
+                            <a href="#" class="btn-text">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon landscaping">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <h3>Landscaping</h3>
+                            <p>Gardening, lawn care, design</p>
+                            <a href="#" class="btn-text">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon hvac">
+                                <i class="fas fa-fan"></i>
+                            </div>
+                            <h3>HVAC</h3>
+                            <p>Installation, repair, maintenance</p>
+                            <a href="#" class="btn-text">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="section-footer">
+                        <button class="btn-secondary">View All Categories</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Providers -->
+            <section id="find-provider" class="section providers-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Featured Service Providers</h2>
+                        <p>Top-rated professionals in your area</p>
+                    </div>
+                    <form id="filter-form" class="providers-filter">
+                        <div class="filter-tabs">
+                            <button type="button" class="filter-tab active">All</button>
+                            <button type="button" class="filter-tab">Near Me</button>
+                            <button type="button" class="filter-tab">Top Rated</button>
+                            <button type="button" class="filter-tab">Emergency</button>
+                        </div>
+                        <div class="filter-controls">
+                            <div class="form-group">
+                                <label for="location">Location:</label>
+                                <input type="text" id="location" name="location" placeholder="Enter location">
+                            </div>
+                            <div class="form-group">
+                                <label for="distance">Distance (km):</label>
+                                <select id="distance" name="distance">
+                                    <option value="5">5 km</option>
+                                    <option value="10">10 km</option>
+                                    <option value="20">20 km</option>
+                                    <option value="50">50 km</option>
+                                    <option value="100">100 km</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="service-type-filter">Service Type:</label>
+                                <select id="service-type-filter" name="service-type-filter">
+                                    <option value="all">All Services</option>
+                                    <option value="plumbing">Plumbing</option>
+                                    <option value="electrical">Electrical</option>
+                                    <option value="cleaning">Cleaning</option>
+                                    <option value="carpentry">Carpentry</option>
+                                    <option value="landscaping">Landscaping</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="price-range">Price Range:</label>
+                                <div class="price-range-slider">
+                                    <input type="range" id="price-min" name="price-min" min="0" max="1000" value="0">
+                                    <input type="range" id="price-max" name="price-max" min="0" max="1000" value="500">
+                                    <div class="price-range-values">
+                                        <span id="price-min-value">R0</span>
+                                        <span id="price-max-value">R500</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary">Apply Filters</button>
+                        </div>
+                    </form>
+                    <div class="providers-grid">
+                        <!-- Providers will be loaded dynamically -->
+                    </div>
+                    <div class="section-footer">
+                        <button class="btn-secondary">Load More</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section id="testimonials" class="section testimonials-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>What Our Customers Say</h2>
+                        <p>Trusted by thousands of happy customers</p>
+                    </div>
+                    <div class="swiper testimonials-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">"Ispani saved me when my pipes burst at midnight. Found a plumber within 30 minutes who fixed everything professionally. Amazing service!"</p>
+                                <div class="testimonial-author">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J.">
+                                    <div>
+                                        <h4>Sarah J.</h4>
+                                        <p>Cape Town</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">"The electrician they connected me with was punctual, professional, and reasonably priced. I'll never search for service providers any other way."</p>
+                                <div class="testimonial-author">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Thomas K.">
+                                    <div>
+                                        <h4>Thomas K.</h4>
+                                        <p>Johannesburg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p class="testimonial-text">"I use Ispani for all my home maintenance needs. The quality of providers is consistently excellent and the booking process is so easy."</p>
+                                <div class="testimonial-author">
+                                    <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Amina B.">
+                                    <div>
+                                        <h4>Amina B.</h4>
+                                        <p>Durban</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- App Download CTA -->
+            <section class="section app-download-section">
+                <div class="container">
+                    <div class="app-download-content">
+                        <h2>Get the Ispani App</h2>
+                        <p>Download our mobile app for faster bookings, exclusive offers, and instant notifications.</p>
+                        <div class="download-buttons">
+                            <button class="btn-download">
+                                <i class="fab fa-apple"></i>
+                                <div>
+                                    <span>Download on the</span>
+                                    <strong>App Store</strong>
+                                </div>
+                            </button>
+                            <button class="btn-download">
+                                <i class="fab fa-google-play"></i>
+                                <div>
+                                    <span>Get it on</span>
+                                    <strong>Google Play</strong>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="app-download-image">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mobile App">
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col footer-about">
+                        <div class="footer-logo">
+                            <i class="fas fa-hands-helping"></i>
+                            <h3>Ispa<span>ni</span></h3>
+                        </div>
+                        <p>Connecting you with trusted service professionals for all your home and business needs.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Plumbing</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Electrical</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Cleaning</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Carpentry</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Landscaping</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Press</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Safety Center</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Community Guidelines</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col footer-newsletter">
+                        <h4>Newsletter</h4>
+                        <p>Subscribe to get updates on new services and offers.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Ispani. All rights reserved.</p>
+                    <div class="footer-payments">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bottom Navigation (Mobile) -->
+        <nav class="bottom-nav">
+            <a href="#how-it-works" class="bottom-nav-link active" data-nav="home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#find-provider" class="bottom-nav-link" data-nav="search">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+            </a>
+            <a href="#bookings" class="bottom-nav-link" data-nav="bookings">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="#favorites" class="bottom-nav-link" data-nav="favorites">
+                <i class="fas fa-heart"></i>
+                <span>Favorites</span>
+            </a>
+            <a href="#profile" class="bottom-nav-link" data-nav="profile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- All Modals -->
+    <!-- Request Service Modal -->
+    <div id="request-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Request a Service</h2>
+            <form id="service-form" class="service-form">
+                <div class="form-group">
+                    <label for="service-type">Service Type:</label>
+                    <select id="service-type" name="service-type">
+                        <option value="plumbing">Plumbing</option>
+                        <option value="electrical">Electrical</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="carpentry">Carpentry</option>
+                        <option value="landscaping">Landscaping</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="service-time">Service Time:</label>
+                    <select id="service-time" name="service-time">
+                        <option value="immediately">Immediately</option>
+                        <option value="scheduled">Scheduled</option>
+                    </select>
+                </div>
+                <div class="form-group" id="date-time-picker" style="display: none;">
+                    <label for="service-date-time">Select Date and Time:</label>
+                    <input type="text" id="service-date-time" name="service-date-time" placeholder="Select date and time">
+                </div>
+                <div class="form-group">
+                    <label for="service-details">Service Details:</label>
+                    <textarea id="service-details" name="service-details" placeholder="Describe the service you need..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="service-images">Upload Images (Optional):</label>
+                    <div class="image-upload">
+                        <label for="service-images" class="upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Click to upload images</span>
+                        </label>
+                        <input type="file" id="service-images" name="service-images" accept="image/*" multiple>
+                        <div id="image-preview" class="image-preview"></div>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary btn-block"><i class="fas fa-paper-plane"></i> Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Provider Details Modal -->
+    <div id="provider-modal" class="modal provider-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="provider-modal-header">
+                <div class="provider-badge">
+                    <span>Top Rated</span>
+                </div>
+                <div class="provider-gallery">
+                    <div class="gallery-main">
+                        <img id="main-provider-image" src="" alt="Provider">
+                    </div>
+                    <div class="gallery-thumbs">
+                        <!-- Thumbnails will be added dynamically -->
+                    </div>
+                </div>
+                <div class="provider-header-content">
+                    <h2 id="provider-modal-name"></h2>
+                    <div class="provider-meta">
+                        <div class="provider-rating">
+                            <div class="stars" id="provider-modal-stars">
+                                <!-- Stars will be added dynamically -->
+                            </div>
+                            <span id="provider-modal-rating"></span>
+                            <span id="provider-modal-reviews"></span>
+                        </div>
+                        <div class="provider-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="provider-modal-location"></span>
+                        </div>
+                        <div class="provider-price">
+                            <i class="fas fa-tag"></i>
+                            <span id="provider-modal-price"></span>
+                        </div>
+                    </div>
+                    <div class="provider-actions">
+                        <button class="btn-primary book-now-btn"><i class="fas fa-calendar-alt"></i> Book Now</button>
+                        <button class="btn-secondary"><i class="fas fa-heart"></i> Save</button>
+                        <button class="btn-icon"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="provider-modal-body">
+                <div class="provider-tabs">
+                    <button class="provider-tab active" data-tab="about">About</button>
+                    <button class="provider-tab" data-tab="services">Services</button>
+                    <button class="provider-tab" data-tab="reviews">Reviews</button>
+                    <button class="provider-tab" data-tab="photos">Photos</button>
+                </div>
+                <div class="provider-tab-content active" data-tab="about">
+                    <h3>About This Provider</h3>
+                    <p id="provider-modal-about"></p>
+                    <div class="provider-details">
+                        <div class="detail-item">
+                            <i class="fas fa-user-tie"></i>
+                            <div>
+                                <h4>Experience</h4>
+                                <p id="provider-modal-experience"></p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Verifications</h4>
+                                <p>ID Verified, Background Checked, Licensed</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-language"></i>
+                            <div>
+                                <h4>Languages</h4>
+                                <p>English, Afrikaans, Zulu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="provider-tab-content" data-tab="services">
+                    <h3>Services Offered</h3>
+                    <ul class="services-list" id="provider-modal-services">
+                        <!-- Services will be added dynamically -->
+                    </ul>
+                </div>
+                <div class="provider-tab-content" data-tab="reviews">
+                    <h3>Customer Reviews</h3>
+                    <div class="reviews-list" id="provider-modal-reviews-list">
+                        <!-- Reviews will be added dynamically -->
+                    </div>
+                </div>
+                <div class="provider-tab-content" data-tab="photos">
+                    <h3>Photo Gallery</h3>
+                    <div class="photo-gallery" id="provider-modal-photo-gallery">
+                        <!-- Photos will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal booking-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Book a Service</h2>
+            <form id="booking-form" class="booking-form">
+                <div class="form-group">
+                    <label>Service Provider:</label>
+                    <div class="provider-summary">
+                        <img id="booking-provider-image" src="" alt="Provider">
+                        <div>
+                            <h4 id="booking-provider-name"></h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span id="booking-provider-rating"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="booking-service">Service:</label>
+                    <select id="booking-service" name="booking-service">
+                        <option value="">Select a service</option>
+                        <!-- Services will be added dynamically -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="booking-date">Date & Time:</label>
+                    <input type="text" id="booking-date" name="booking-date" placeholder="Select date and time">
+                </div>
+                <div class="form-group">
+                    <label for="booking-address">Service Address:</label>
+                    <input type="text" id="booking-address" name="booking-address" placeholder="Enter your address">
+                </div>
+                <div class="form-group">
+                    <label for="booking-notes">Special Instructions:</label>
+                    <textarea id="booking-notes" name="booking-notes" placeholder="Any special instructions or details..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="booking-payment">Payment Method:</label>
+                    <div class="payment-methods">
+                        <label class="payment-method">
+                            <input type="radio" name="payment-method" value="credit-card" checked>
+                            <div class="payment-card">
+                                <i class="fab fa-cc-visa"></i>
+                                <span>Credit/Debit Card</span>
+                            </div>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="payment-method" value="paypal">
+                            <div class="payment-card">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="payment-method" value="cash">
+                            <div class="payment-card">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Cash on Service</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="booking-summary">
+                    <div class="summary-item">
+                        <span>Service Fee</span>
+                        <span id="booking-service-fee">R0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Materials (if needed)</span>
+                        <span>To be determined</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Travel Fee</span>
+                        <span>R50</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Estimated Total</span>
+                        <span id="booking-total">R0</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary btn-block"><i class="fas fa-lock"></i> Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login/Register Modal -->
+    <div id="login-modal" class="modal login-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="register">Register</button>
+            </div>
+            <div class="auth-content">
+                <div class="auth-tab-content active" data-tab="login">
+                    <h2>Welcome Back</h2>
+                    <p>Login to access your account and book services.</p>
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Email:</label>
+                            <input type="email" id="login-email" name="login-email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password:</label>
+                            <input type="password" id="login-password" name="login-password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox" name="remember-me">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#forgot-password" class="forgot-password">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="btn-primary btn-block">Login</button>
+                        <div class="auth-divider">
+                            <span>or continue with</span>
+                        </div>
+                        <div class="social-login">
+                            <button type="button" class="btn-social google">
+                                <i class="fab fa-google"></i> Google
+                            </button>
+                            <button type="button" class="btn-social facebook">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="auth-tab-content" data-tab="register">
+                    <h2>Create an Account</h2>
+                    <p>Join as a customer or service provider.</p>
+                    <form id="register-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="register-name">Full Name:</label>
+                            <input type="text" id="register-name" name="register-name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email:</label>
+                            <input type="email" id="register-email" name="register-email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-phone">Phone Number:</label>
+                            <input type="tel" id="register-phone" name="register-phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password:</label>
+                            <input type="password" id="register-password" name="register-password" placeholder="Create a password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm-password">Confirm Password:</label>
+                            <input type="password" id="register-confirm-password" name="register-confirm-password" placeholder="Confirm your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="register-option">
+                                <input type="radio" name="user-type" value="customer" checked>
+                                <span>I need services</span>
+                            </label>
+                            <label class="register-option">
+                                <input type="radio" name="user-type" value="provider">
+                                <span>I provide services</span>
+                            </label>
+                        </div>
+                        <div id="provider-fields" style="display: none;">
+                            <div class="form-group">
+                                <label for="provider-service">Service Type:</label>
+                                <select id="provider-service" name="provider-service">
+                                    <option value="">Select your service</option>
+                                    <option value="plumbing">Plumbing</option>
+                                    <option value="electrical">Electrical</option>
+                                    <option value="cleaning">Cleaning</option>
+                                    <option value="carpentry">Carpentry</option>
+                                    <option value="landscaping">Landscaping</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="provider-experience">Years of Experience:</label>
+                                <input type="number" id="provider-experience" name="provider-experience" placeholder="Enter years of experience">
+                            </div>
+                            <div class="form-group">
+                                <label for="provider-bio">Professional Bio:</label>
+                                <textarea id="provider-bio" name="provider-bio" placeholder="Tell us about your professional experience"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary btn-block">Create Account</button>
+                        <div class="auth-divider">
+                            <span>or sign up with</span>
+                        </div>
+                        <div class="social-login">
+                            <button type="button" class="btn-social google">
+                                <i class="fab fa-google"></i> Google
+                            </button>
+                            <button type="button" class="btn-social facebook">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Provider Registration Modal -->
+    <div id="provider-registration-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Become a Service Provider</h2>
+            <form id="provider-registration-form" class="provider-form">
+                <div class="form-group">
+                    <label for="provider-reg-name">Full Name:</label>
+                    <input type="text" id="provider-reg-name" name="provider-reg-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-reg-email">Email:</label>
+                    <input type="email" id="provider-reg-email" name="provider-reg-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-reg-phone">Phone Number:</label>
+                    <input type="tel" id="provider-reg-phone" name="provider-reg-phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-reg-service">Service Type:</label>
+                    <select id="provider-reg-service" name="provider-reg-service" required>
+                        <option value="">Select your service</option>
+                        <option value="plumbing">Plumbing</option>
+                        <option value="electrical">Electrical</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="carpentry">Carpentry</option>
+                        <option value="landscaping">Landscaping</option>
+                        <option value="hvac">HVAC</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="provider-reg-experience">Years of Experience:</label>
+                    <input type="number" id="provider-reg-experience" name="provider-reg-experience" placeholder="Enter years of experience" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-reg-bio">Professional Bio:</label>
+                    <textarea id="provider-reg-bio" name="provider-reg-bio" placeholder="Tell us about your professional experience" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="provider-reg-address">Business Address:</label>
+                    <input type="text" id="provider-reg-address" name="provider-reg-address" placeholder="Enter your business address" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-reg-certifications">Certifications (Optional):</label>
+                    <input type="text" id="provider-reg-certifications" name="provider-reg-certifications" placeholder="List any professional certifications">
+                </div>
+                <div class="form-group">
+                    <label for="provider-reg-images">Upload Photos of Your Work:</label>
+                    <div class="image-upload">
+                        <label for="provider-reg-images" class="upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Click to upload images</span>
+                        </label>
+                        <input type="file" id="provider-reg-images" name="provider-reg-images" accept="image/*" multiple>
+                        <div id="provider-reg-preview" class="image-preview"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="terms-checkbox">
+                        <input type="checkbox" id="provider-reg-terms" name="provider-reg-terms" required>
+                        <span>I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary btn-block">
+                    <i class="fas fa-check-circle"></i> Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
